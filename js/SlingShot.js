@@ -13,7 +13,7 @@ class Slingshot{
 
     }
     fly(){
-        this.sling.bodyA =;
+        this.sling.bodyA = null;
     }
     display(){
         if(this.sling.bodyA){

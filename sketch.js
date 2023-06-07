@@ -2,6 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
+const Body =Matter.Body
 
 var engine, world;
 var holder,ball,ground;
@@ -9,10 +10,13 @@ var stand1,stand2;
 var ball;
 var slingShot;
 var fruit;
+var backgroundImgvar
+var g
+
 function preload(){
   backgroundImg = loadImage("background.png");
- fruit=loadImage("melon.png");
- g=loadImage("basket.png")
+  fruit=loadImage("melon.png");
+  g=loadImage("basket.png")
 }
 function setup() {
   createCanvas(900,400);
@@ -24,10 +28,10 @@ function setup() {
  
 
   //Desafio1:
-  ball = Bodies.(50,200,20);
+  ball = Bodies.circle(50,200,20);
   World.add(world,ball);
 //Desafio2
-  slingShot = new Slingshot();
+  slingShot = new Slingshot(ball,{x:100,y:100});
 
 }
 function draw() {
@@ -47,7 +51,7 @@ function draw() {
   slingShot.display();
 }
 function mouseDragged(){
-  Matter.Body.setPosition();
+  Matter.Body.setPosition(this.ball,{x:mouseX,y:mouseY});
 }
 function mouseReleased(){
   slingShot.fly();
